@@ -1,7 +1,7 @@
 package ch.hsr.mge.fragmentswizard.fragments;
 
-import android.app.Activity;
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +20,7 @@ public class StepSubscribedFragment extends Fragment {
     }
 
     @Override
-    public void onAttach(Activity activity) {
+    public void onAttach(Context activity) {
         super.onAttach(activity);
         if (!(activity instanceof View.OnClickListener)) {
             throw new AssertionError("Activity must implement View.OnClickListener!");
