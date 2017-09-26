@@ -9,21 +9,30 @@ import android.view.ViewGroup;
 
 import ch.hsr.mge.fragmentswizard.R;
 
-public class StepHelloFragment extends Fragment {
+public class StepHelloFragment extends Fragment implements View.OnClickListener {
+
+    private View.OnClickListener activity;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_step_hello, container, false);
-        root.findViewById(R.id.nextButton).setOnClickListener((View.OnClickListener) getActivity());
+        root.findViewById(R.id.nextButton).setOnClickListener(this);
         return root;
     }
 
     @Override
     public void onAttach(Context activity) {
         super.onAttach(activity);
-        if (!(activity instanceof View.OnClickListener)) {
+        if (activity instanceof View.OnClickListener) {
+            this.activity = (View.OnClickListener) activity;
+        } else {
             throw new AssertionError("Activity must implement View.OnClickListener!");
         }
+    }
+
+    @Override
+    public void onClick(View view) {
+        activity.onClick(view);
     }
 }

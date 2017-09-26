@@ -23,7 +23,7 @@ public class WizardActivity extends AppCompatActivity implements View.OnClickLis
     enum Pages {HELLO, NAME, NEWSLETTER, THANKS, DONE}
 
     /**
-     * Wegen des Back-Buttons müssen wir den Stack wir mit den Activities automatisch bekommen
+     * Wegen des Back-Buttons müssen wir den Stack den wir mit den Activities automatisch bekommen
      * sozusagen nachbauen. Beim Aufruf einer neuen Wizard-Seite wird diese auf dem Stack abgelegt,
      * und beim Back-Button wieder entfernt.
      * */
@@ -71,7 +71,7 @@ public class WizardActivity extends AppCompatActivity implements View.OnClickLis
             case DONE:
                 pages.clear();
                 pages.push(Pages.HELLO);
-                // Die Regitration ist fertig, für den naechsten Benutzer erstellen wir ein
+                // Die Registration ist fertig, für den naechsten Benutzer erstellen wir ein
                 // neues Datenobjekt.
                 userRegistrationData = new UserRegistrationData();
                 switchTo(new StepHelloFragment());
@@ -92,11 +92,11 @@ public class WizardActivity extends AppCompatActivity implements View.OnClickLis
     public void onBackPressed() {
         // Wenn der Stack leer wird will der Benutzer die App wohl beenden, dies erreichen wir
         // durch ein finishen der Activity
-        if (fragmentManager.getBackStackEntryCount() <= 1) {
+        if (fragmentManager.getBackStackEntryCount() < 1) {
             finish();
         } else {
             pages.pop();
-            getFragmentManager().popBackStack();
+            fragmentManager.popBackStack();
         }
     }
 
