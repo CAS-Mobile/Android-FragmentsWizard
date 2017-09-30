@@ -92,7 +92,7 @@ public class WizardActivity extends AppCompatActivity implements View.OnClickLis
     public void onBackPressed() {
         // Wenn der Stack leer wird will der Benutzer die App wohl beenden, dies erreichen wir
         // durch ein finishen der Activity
-        if (fragmentManager.getBackStackEntryCount() < 1) {
+        if (fragmentManager.getBackStackEntryCount() <= 1) {
             finish();
         } else {
             pages.pop();
